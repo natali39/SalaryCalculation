@@ -11,10 +11,10 @@ namespace SalaryCalculation.Model
         public string LastName { get; set; }
         public DateTime WorkingSince { get; set; }
         public decimal BaseSalary { get; set; }
-        public Staff Chief { get; set; }
+        //public Staff Chief { get; set; }
         
 
-        public virtual decimal CalculateSalary(decimal SalaryRate)
+        public virtual decimal GetSalary(DateTime payDate)
         {
             throw new System.NotImplementedException();
         }

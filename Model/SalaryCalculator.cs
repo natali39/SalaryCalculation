@@ -6,6 +6,20 @@ namespace SalaryCalculation.Model
 {
     public class SalaryCalculator
     {
+        Staff staff { get; set; }
+        int timeInYears { get; set; }
+        DateTime payDate { get; set; }
 
+        public SalaryCalculator(Staff staff, DateTime payDate)
+        {
+            this.staff = staff;
+            this.payDate = payDate;
+        }
+
+        public decimal CalculateSalary()
+        {
+            throw new System.NotImplementedException();
+
+        }
     }
 }

@@ -4,7 +4,11 @@ using System.Text;
 
 namespace SalaryCalculation.Model
 {
-    class TimeCounter
+    public static class TimeCounter
     {
+        public static int GetTimeInYears(DateTime workingSince, DateTime payDate)
+        {
+            return (payDate - workingSince).Days / Const.CountDaysInYear;
+        }
     }
 }

@@ -1,10 +1,16 @@
-﻿namespace SalaryCalculation.Model
+﻿using System;
+
+namespace SalaryCalculation.Model
 {
     public class Employee : Staff
     {
-        public override decimal CalculateSalary(decimal SalaryRate)
+        public override decimal GetSalary(DateTime payDate)
         {
-            throw new System.NotImplementedException();
+            var totalRate = Const.EmployeeAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
+            if (totalRate > Const.MaxEmployeeAnnualRate)
+                totalRate = Const.MaxEmployeeAnnualRate;
+            var experienceBonus = BaseSalary * totalRate;
+            return BaseSalary + experienceBonus;
         }
     }
 }
