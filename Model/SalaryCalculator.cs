@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SalaryCalculation.Model
 {
+    //Хотела все рассчеты зарплаты вынести в отдельный класс.
     public class SalaryCalculator
     {
         Staff staff { get; set; }

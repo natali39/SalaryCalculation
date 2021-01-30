@@ -10,7 +10,7 @@ namespace SalaryCalculation.Model
             if (totalRate > Const.MaxEmployeeAnnualRate)
                 totalRate = Const.MaxEmployeeAnnualRate;
             var experienceBonus = BaseSalary * totalRate;
-            return BaseSalary + experienceBonus;
+            return Math.Round( (BaseSalary + experienceBonus), 2);
         }
     }
 }

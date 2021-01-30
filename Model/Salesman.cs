@@ -11,10 +11,9 @@ namespace SalaryCalculation.Model
             if (totalRate > Const.MaxSalesmanAnnualRate)
                 totalRate = Const.MaxSalesmanAnnualRate;
             var experienceBonus = BaseSalary * totalRate;
-            var subordinatesBonus = Const.SalesmanRateForSubordinates
-                * Subordinates
-                .Sum(staff => staff.GetSalary(payDate));
-            return BaseSalary + experienceBonus + subordinatesBonus;
+            var SubordinatesSalarySum = Subordinates.Sum(staff => staff.GetSalary(payDate));
+            var subordinatesBonus = Const.SalesmanRateForSubordinates * SubordinatesSalarySum;
+            return Math.Round( (BaseSalary + experienceBonus + subordinatesBonus), 2);
         }
     }
 }

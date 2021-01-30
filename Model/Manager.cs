@@ -15,7 +15,7 @@ namespace SalaryCalculation.Model
                 * Subordinates
                 .Where(staff => staff is Employee)
                 .Sum(staff => staff.GetSalary(payDate));
-            return BaseSalary + experienceBonus + subordinatesBonus;
+            return Math.Round( (BaseSalary + experienceBonus + subordinatesBonus), 2);
         }
     }
 }
