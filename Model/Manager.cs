@@ -3,15 +3,18 @@ using System.Linq;
 
 namespace SalaryCalculation.Model
 {
-    public class Manager : HighLevelStaff
+    public class Manager : HighLevelStaff, ICalculateSalary
     {
+        private const decimal managerAnnualRate = 0.05M;
+        private const decimal maxManagerAnnualRate = 0.4M;
+        private const decimal managerRateForSubordinates = 0.005M;
         public override decimal GetSalary(DateTime payDate)
         {
-            var totalRate = Const.ManagerAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
-            if (totalRate > Const.MaxManagerAnnualRate)
-                totalRate = Const.MaxManagerAnnualRate;
+            var totalRate = managerAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
+            if (totalRate > maxManagerAnnualRate)
+                totalRate = maxManagerAnnualRate;
             var experienceBonus = BaseSalary * totalRate;
-            var subordinatesBonus = Const.ManagerRateForSubordinates
+            var subordinatesBonus = managerRateForSubordinates
                 * Subordinates
                 .Where(staff => staff is Employee)
                 .Sum(staff => staff.GetSalary(payDate));

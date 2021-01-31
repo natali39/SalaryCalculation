@@ -7,10 +7,10 @@ namespace SalaryCalculation.Repository
 {
     interface IStaffRepository
     {
-        List<Staff> GetAllStaffs();
-        void CreateStaff(Staff staff);
-        Staff ReadStaff();
-        Staff UpdateStaff(Staff staff);
-        void DeleteStaff(Staff staff);
+        List<Staff> GetAll();
+        void Create(Staff staff);
+        Staff Read();
+        Staff Update(Staff staff);
+        void Delete(Staff staff);
     }
 }

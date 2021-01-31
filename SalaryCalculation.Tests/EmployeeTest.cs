@@ -9,6 +9,7 @@ namespace SalaryCalculation.Tests
         [SetUp]
         public void Setup()
         {
+            
         }
 
         [Test]
