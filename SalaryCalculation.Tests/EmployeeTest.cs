@@ -6,20 +6,15 @@ namespace SalaryCalculation.Tests
 {
     public class EmployeeTest
     {
-        [SetUp]
-        public void Setup()
-        {
-            
-        }
-
         [Test]
-        public void CalculateSalaryEmployee()
+        public void GetSalary_ShouldReturn_Equals()
         {
+
             var staff = new Employee()
             {
                 WorkingSince = new DateTime(2019, 6, 12),
                 BaseSalary = 30000
-            };
+            }; 
 
             var testDate = new DateTime(2021, 1, 30);
             var salary = staff.GetSalary(testDate);
@@ -28,7 +23,7 @@ namespace SalaryCalculation.Tests
         }
 
         [Test]
-        public void CalculateSalaryEmployeeWithLimitMaxAnnualRate()
+        public void GetSalary_WithLimitMaxAnnualRate_ShouldReturn_Equals()
         {
             var staff = new Employee()
             {

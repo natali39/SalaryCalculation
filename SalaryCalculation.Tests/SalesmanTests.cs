@@ -7,13 +7,10 @@ namespace SalaryCalculation.Tests
 {
     public class SalesmanTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+        //GetSalary_IfListSubordinatesIsEmpty
 
         [Test]
-        public void CalculateSalarySalesmanWithoutListSubordinates()
+        public void GetSalary_IfListSubordinatesNotEmpty()
         {
             var staff = new Salesman()
             {
@@ -28,7 +25,7 @@ namespace SalaryCalculation.Tests
         }
 
         [Test]
-        public void CalculateSalarySalesmanWithListDifferentSubordinates()
+        public void GetSalary_WithListDifferentSubordinates()
         {
             var staff1 = new Employee()
             {

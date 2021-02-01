@@ -7,13 +7,8 @@ namespace SalaryCalculation.Tests
 {
     public class ManagerTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void CalculateSalaryManagerWithListDifferentSubordinates()
+        public void GetSalary_WithListDifferentSubordinates()
         {
             var staff1 = new Employee()
             {
