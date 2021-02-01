@@ -20,8 +20,6 @@ namespace SalaryCalculation.Model
         /// </summary>
         public decimal BaseSalary { get; set; }
 
-        public IGroup Group { get; set; }
-
         //public Staff Chief { get; set; }
 
         public virtual decimal GetSalary(DateTime payDate)
