@@ -4,13 +4,13 @@ using System.Text;
 
 namespace SalaryCalculation.Model
 {
-    public class HighLevelStaff : Staff
+    public class HighLevelStaff
     {
-        public List<Staff> Subordinates { get; set; }
+        public List<IStaff> Subordinates { get; set; }
 
         public HighLevelStaff()
         {
-            Subordinates = new List<Staff>();
+            Subordinates = new List<IStaff>();
         }
     }
 }

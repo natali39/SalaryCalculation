@@ -7,7 +7,7 @@ namespace SalaryCalculation.Tests
     public class EmployeeTest
     {
         [Test]
-        public void GetSalary_ShouldReturn_Equals()
+        public void GetSalary_ShouldReturn_Equals() // < чем maxAnnualRate
         {
 
             var staff = new Employee()
@@ -23,7 +23,7 @@ namespace SalaryCalculation.Tests
         }
 
         [Test]
-        public void GetSalary_WithLimitMaxAnnualRate_ShouldReturn_Equals()
+        public void GetSalary_LimitMaxAnnualRate_RightValue()
         {
             var staff = new Employee()
             {

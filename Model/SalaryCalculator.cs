@@ -7,11 +7,11 @@ namespace SalaryCalculation.Model
     //Хотела все рассчеты зарплаты вынести в отдельный класс.
     public class SalaryCalculator
     {
-        Staff staff { get; set; }
+        IStaff staff { get; set; }
         int timeInYears { get; set; }
         DateTime payDate { get; set; }
 
-        public SalaryCalculator(Staff staff, DateTime payDate)
+        public SalaryCalculator(IStaff staff, DateTime payDate)
         {
             this.staff = staff;
             this.payDate = payDate;

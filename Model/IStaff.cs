@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SalaryCalculation.Model
 {
-    public class Staff
+    public interface IStaff
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -22,9 +22,6 @@ namespace SalaryCalculation.Model
 
         //public Staff Chief { get; set; }
 
-        public virtual decimal GetSalary(DateTime payDate)
-        {
-            return BaseSalary;
-        }
-    }
+        public decimal GetSalary(DateTime payDate);
+    }  
 }

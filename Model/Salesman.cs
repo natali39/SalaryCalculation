@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SalaryCalculation.Model
 {
-    public class Salesman : HighLevelStaff, IGetSalary
+    public class Salesman : HighLevelStaff, IStaff
     {
         /// <summary>
         /// доля от базовой ставки за каждый год работы
@@ -20,7 +20,14 @@ namespace SalaryCalculation.Model
         /// </summary>
         private const decimal salesmanRateForSubordinates = 0.003M;
 
-        public override decimal GetSalary(DateTime payDate)
+        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string MiddleName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime WorkingSince { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public decimal BaseSalary { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public decimal GetSalary(DateTime payDate)
         {
             var totalRate = salesmanAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
             if (totalRate > maxSalesmanAnnualRate)
