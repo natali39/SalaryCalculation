@@ -20,7 +20,10 @@ namespace SalaryCalculation.Model
         /// </summary>
         public decimal BaseSalary { get; set; }
 
-        //public Staff Chief { get; set; }
+        /// <summary>
+        /// Начальник
+        /// </summary>
+        public IStaff Chief { get; set; }
 
         public decimal GetSalary(DateTime payDate);
     }  

@@ -7,25 +7,26 @@ namespace SalaryCalculation.Model
         /// <summary>
         /// доля от базовой ставки за каждый год работы
         /// </summary>
-        private const decimal employeeAnnualRate = 0.03M;
+        private const decimal annualRate = 0.03M;
 
         /// <summary>
         /// максимальная доля от базовой ставки, которая может быть выплачена сотруднику качестве надбавки за стаж работы
         /// </summary>
-        private const decimal maxEmployeeAnnualRate = 0.3M;
+        private const decimal maxAnnualRate = 0.3M;
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MiddleName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime WorkingSince { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BaseSalary { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public DateTime WorkingSince { get; set; }
+        public decimal BaseSalary { get; set; }
+        public IStaff Chief { get; set; }
 
         public decimal GetSalary(DateTime payDate)
         {
-            var totalRate = employeeAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
-            if (totalRate > maxEmployeeAnnualRate)
-                totalRate = maxEmployeeAnnualRate;
+            var totalRate = annualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
+            if (totalRate > maxAnnualRate)
+                totalRate = maxAnnualRate;
             var experienceBonus = BaseSalary * totalRate;
             return Math.Round((BaseSalary + experienceBonus), 2);
         }

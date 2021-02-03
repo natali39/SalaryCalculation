@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalaryCalculation.Repository
+namespace SalaryCalculation.Model
 {
-    class StaffDbRepository
+    public class SalaryReport
     {
+
+
     }
 }

@@ -8,32 +8,33 @@ namespace SalaryCalculation.Model
         /// <summary>
         /// доля от базовой ставки за каждый год работы
         /// </summary>
-        private const decimal managerAnnualRate = 0;
+        private const decimal managerAnnualRate = 0.03M;
 
         /// <summary>
         /// максимальная доля от базовой ставки, которая может быть выплачена сотруднику в качестве надбавки за стаж работы
         /// </summary>
-        private const decimal maxManagerAnnualRate = 0.4M;
+        private const decimal maxAnnualRate = 0.4M;
 
         /// <summary>
         /// доля от суммарной зарплаты всех подчененных первого уровня
         /// </summary>
-        private const decimal managerRateForSubordinates = 0.005M;
+        private const decimal rateForSubordinates = 0.005M;
 
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MiddleName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime WorkingSince { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public decimal BaseSalary { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public DateTime WorkingSince { get; set; }
+        public decimal BaseSalary { get; set; }
+        public IStaff Chief { get; set; }
 
         public decimal GetSalary(DateTime payDate)
         {
             var totalRate = managerAnnualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
-            if (totalRate > maxManagerAnnualRate)
-                totalRate = maxManagerAnnualRate;
+            if (totalRate > maxAnnualRate)
+                totalRate = maxAnnualRate;
             var experienceBonus = BaseSalary * totalRate;
-            var subordinatesBonus = managerRateForSubordinates
+            var subordinatesBonus = rateForSubordinates
                 * Subordinates
                 .Where(staff => staff is Employee)
                 .Sum(staff => staff.GetSalary(payDate));
