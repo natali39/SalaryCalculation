@@ -27,7 +27,7 @@ namespace SalaryCalculation.Tests
             {
                 WorkingSince = new DateTime(2018, 4, 24),
                 BaseSalary = 50000,
-                Subordinates = new List<IStaff> { staff1, staff2 }
+                Subordinates = new List<Staff> { staff1, staff2 }
             };
 
 
@@ -35,14 +35,14 @@ namespace SalaryCalculation.Tests
             {
                 WorkingSince = new DateTime(2015, 2, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<IStaff> { staff1, staff2, staff3 }
+                Subordinates = new List<Staff> { staff1, staff2, staff3 }
             };
 
             var staff5 = new Manager()
             {
                 WorkingSince = new DateTime(2008, 1, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<IStaff> { staff1, staff2, staff3, staff4 }
+                Subordinates = new List<Staff> { staff1, staff2, staff3, staff4 }
             };
 
             var testDate = new DateTime(2021, 1, 30);

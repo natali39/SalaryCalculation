@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SalaryCalculation.Model
 {
-    public class Salesman : HighLevelStaff, IStaff
+    public class Salesman : HighLevelStaff
     {
         /// <summary>
         /// доля от базовой ставки за каждый год работы
@@ -20,15 +20,7 @@ namespace SalaryCalculation.Model
         /// </summary>
         private const decimal rateForSubordinates = 0.003M;
 
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public DateTime WorkingSince { get; set; }
-        public decimal BaseSalary { get; set; }
-        public IStaff Chief { get; set; }
-
-        public decimal GetSalary(DateTime payDate)
+        public override decimal GetSalary(DateTime payDate)
         {
             var totalRate = annualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
             if (totalRate > maxAnnualRate)
@@ -36,7 +28,7 @@ namespace SalaryCalculation.Model
             var experienceBonus = BaseSalary * totalRate;
             var SubordinatesSalarySum = Subordinates.Sum(staff => staff.GetSalary(payDate));
             var subordinatesBonus = rateForSubordinates * SubordinatesSalarySum;
-            return Math.Round( (BaseSalary + experienceBonus + subordinatesBonus), 2);
+            return Math.Round((BaseSalary + experienceBonus + subordinatesBonus), 2);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace SalaryCalculation.Model
 {
     public static class TestData
     {
-        public static List<IStaff> GetStaffs()
+        public static List<Staff> GetStaffs()
         {
-            var staffs = new List<IStaff>();
+            var staffs = new List<Staff>();
 
             var staff1 = new Employee()
             {
@@ -40,7 +40,7 @@ namespace SalaryCalculation.Model
                 LastName = "Sedov",
                 WorkingSince = new DateTime(2018, 4, 24),
                 BaseSalary = 50000,
-                Subordinates = new List<IStaff> { staff1, staff2 }
+                Subordinates = new List<Staff> { staff1, staff2 }
             };
             staffs.Add(staff3);
 
@@ -52,7 +52,7 @@ namespace SalaryCalculation.Model
                 LastName = "Krasnov",
                 WorkingSince = new DateTime(2015, 2, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<IStaff> { staff1, staff2, staff3 }
+                Subordinates = new List<Staff> { staff1, staff2, staff3 }
             };
             staffs.Add(staff4);
 
@@ -64,7 +64,7 @@ namespace SalaryCalculation.Model
                 LastName = "Belov",
                 WorkingSince = new DateTime(2008, 1, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<IStaff> { staff1, staff2, staff3, staff4 }
+                Subordinates = new List<Staff> { staff1, staff2, staff3, staff4 }
             };
             staffs.Add(staff5);
 
@@ -76,7 +76,7 @@ namespace SalaryCalculation.Model
                 LastName = "Chernov",
                 WorkingSince = new DateTime(2007, 1, 30),
                 BaseSalary = 50000,
-                Subordinates = new List<IStaff> { staff1, staff2, staff5 }
+                Subordinates = new List<Staff> { staff1, staff2, staff5 }
             };
             staffs.Add(staff6);
 

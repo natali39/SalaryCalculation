@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalaryCalculation.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{AB43300E-20D3-4EE7-8C15-6CCD14DDB48C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Sqlite", "Repository.Sqlite\Repository.Sqlite.csproj", "{0BE62E41-E94F-4E24-910D-5AF5787D1B78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AB43300E-20D3-4EE7-8C15-6CCD14DDB48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB43300E-20D3-4EE7-8C15-6CCD14DDB48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB43300E-20D3-4EE7-8C15-6CCD14DDB48C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE62E41-E94F-4E24-910D-5AF5787D1B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE62E41-E94F-4E24-910D-5AF5787D1B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE62E41-E94F-4E24-910D-5AF5787D1B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE62E41-E94F-4E24-910D-5AF5787D1B78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

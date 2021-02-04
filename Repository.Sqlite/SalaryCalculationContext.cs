@@ -1,19 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SalaryCalculation.Model;
+using Repository.Sqlite.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SalaryCalculation.Model
+namespace Repository.Sqlite
 {
-    class SalaryDbContext : DbContext
+    public class SalaryCalculationContext : DbContext
     {
-        public DbSet<IStaff> Staffs { get; set; }
-
-        public SalaryDbContext()
+        public SalaryCalculationContext()
         {
             Database.EnsureCreated();
         }
+        public DbSet<Staff> Staffs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

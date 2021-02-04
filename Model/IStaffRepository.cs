@@ -4,10 +4,10 @@ namespace SalaryCalculation.Model
 {
     public interface IStaffRepository
     {
-        List<IStaff> GetAll();
-        void Add(IStaff staff);
-        IStaff Read(int id);
-        void Update(IStaff staff);
-        void Delete(IStaff staff);
+        List<Staff> GetAll();
+        void Add(Staff staff);
+        Staff Get(int id);
+        void Update(Staff staff);
+        void Delete(Staff staff);
     }
 }

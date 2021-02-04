@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SalaryCalculation.Model
 {
-    public class HighLevelStaff
+    public class HighLevelStaff : Staff
     {
-        public List<IStaff> Subordinates { get; set; }
+        public List<Staff> Subordinates { get; set; }
 
         public HighLevelStaff()
         {
-            Subordinates = new List<IStaff>();
+            Subordinates = new List<Staff>();
         }
     }
 }

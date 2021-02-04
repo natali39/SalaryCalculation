@@ -43,7 +43,7 @@ namespace SalaryCalculation.Tests
             {
                 WorkingSince = new DateTime(2018, 4, 24),
                 BaseSalary = 50000,
-                Subordinates = new List<IStaff> { staff1, staff2 }
+                Subordinates = new List<Staff> { staff1, staff2 }
             };
 
             var testDate = new DateTime(2021, 1, 30);

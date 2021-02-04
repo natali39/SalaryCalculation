@@ -2,7 +2,7 @@
 
 namespace SalaryCalculation.Model
 {
-    public class Employee : IStaff
+    public class Employee : Staff
     {
         /// <summary>
         /// доля от базовой ставки за каждый год работы
@@ -14,15 +14,7 @@ namespace SalaryCalculation.Model
         /// </summary>
         private const decimal maxAnnualRate = 0.3M;
 
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public DateTime WorkingSince { get; set; }
-        public decimal BaseSalary { get; set; }
-        public IStaff Chief { get; set; }
-
-        public decimal GetSalary(DateTime payDate)
+        public override decimal GetSalary(DateTime payDate)
         {
             var totalRate = annualRate * TimeCounter.GetTimeInYears(this.WorkingSince, payDate);
             if (totalRate > maxAnnualRate)
