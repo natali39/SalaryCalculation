@@ -17,7 +17,8 @@ namespace SalaryCalculation.Model
                 MiddleName = "Ivanovich",
                 LastName = "Ivanov",
                 WorkingSince = new DateTime(2019, 6, 12),
-                BaseSalary = 30000
+                BaseSalary = 30000,
+                Group = Group.Employee
             };
             staffs.Add(staff1);
 
@@ -28,7 +29,8 @@ namespace SalaryCalculation.Model
                 MiddleName = "Petrovich",
                 LastName = "Petrov",
                 WorkingSince = new DateTime(2009, 12, 1),
-                BaseSalary = 30000
+                BaseSalary = 30000,
+                Group = Group.Employee
             };
             staffs.Add(staff2);
 
@@ -40,8 +42,13 @@ namespace SalaryCalculation.Model
                 LastName = "Sedov",
                 WorkingSince = new DateTime(2018, 4, 24),
                 BaseSalary = 50000,
-                Subordinates = new List<Staff> { staff1, staff2 }
+                Subordinates = new List<Staff> { staff1, staff2 },
+                Group = Group.Salesman
             };
+
+            staff1.ChiefId = 3;
+            staff2.ChiefId = 3;
+
             staffs.Add(staff3);
 
             var staff4 = new Manager()
@@ -52,8 +59,12 @@ namespace SalaryCalculation.Model
                 LastName = "Krasnov",
                 WorkingSince = new DateTime(2015, 2, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<Staff> { staff1, staff2, staff3 }
+                Subordinates = new List<Staff> { staff3 },
+                Group = Group.Manager
             };
+
+            staff3.ChiefId = 4;
+
             staffs.Add(staff4);
 
             var staff5 = new Manager()
@@ -64,8 +75,12 @@ namespace SalaryCalculation.Model
                 LastName = "Belov",
                 WorkingSince = new DateTime(2008, 1, 13),
                 BaseSalary = 60000,
-                Subordinates = new List<Staff> { staff1, staff2, staff3, staff4 }
+                Subordinates = new List<Staff> { staff4 },
+                Group = Group.Manager
             };
+
+            staff3.ChiefId = 5;
+
             staffs.Add(staff5);
 
             var staff6 = new Salesman()
@@ -76,7 +91,7 @@ namespace SalaryCalculation.Model
                 LastName = "Chernov",
                 WorkingSince = new DateTime(2007, 1, 30),
                 BaseSalary = 50000,
-                Subordinates = new List<Staff> { staff1, staff2, staff5 }
+                Group = Group.Salesman
             };
             staffs.Add(staff6);
 

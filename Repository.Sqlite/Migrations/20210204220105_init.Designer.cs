@@ -9,8 +9,8 @@ using Repository.Sqlite;
 namespace Repository.Sqlite.Migrations
 {
     [DbContext(typeof(SalaryCalculationContext))]
-    [Migration("20210204155758_Init")]
-    partial class Init
+    [Migration("20210204220105_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,7 +18,7 @@ namespace Repository.Sqlite.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.11");
 
-            modelBuilder.Entity("Repository.Sqlite.Entities.Staff", b =>
+            modelBuilder.Entity("Repository.Sqlite.Entities.StaffDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,11 +27,17 @@ namespace Repository.Sqlite.Migrations
                     b.Property<decimal>("BaseSalary")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ChiefId")
+                    b.Property<int>("ChiefId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("GroupDb")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HasChief")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
@@ -44,16 +50,7 @@ namespace Repository.Sqlite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChiefId");
-
                     b.ToTable("Staffs");
-                });
-
-            modelBuilder.Entity("Repository.Sqlite.Entities.Staff", b =>
-                {
-                    b.HasOne("Repository.Sqlite.Entities.Staff", "Chief")
-                        .WithMany()
-                        .HasForeignKey("ChiefId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SalaryCalculation.Model
 {
@@ -21,9 +20,19 @@ namespace SalaryCalculation.Model
         public decimal BaseSalary { get; set; }
 
         /// <summary>
-        /// Начальник
+        /// Наличие начальника
         /// </summary>
-        public Staff Chief { get; set; }
+        public bool HasChief { get; set; }
+
+        /// <summary>
+        /// Id Начальника
+        /// </summary>
+        public int ChiefId { get; set; }
+
+        /// <summary>
+        /// Группа, к которой относится сотрудник (Manager, Salesman, Employee)
+        /// </summary>
+        public Group Group { get; set; }
 
         public virtual decimal GetSalary(DateTime payDate)
         {

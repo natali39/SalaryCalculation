@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository.Sqlite.Entities;
-using System;
 
 namespace Repository.Sqlite
 {
@@ -10,7 +9,7 @@ namespace Repository.Sqlite
         {
             Database.EnsureCreated();
         }
-        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<StaffDb> Staffs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
