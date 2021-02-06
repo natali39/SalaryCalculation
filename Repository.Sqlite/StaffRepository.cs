@@ -3,6 +3,7 @@ using SalaryCalculation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository.Sqlite
 {
@@ -15,11 +16,12 @@ namespace Repository.Sqlite
             this.context = context;
         }
 
-        public void Add(Staff staff)
+        public Staff Add(Staff staff)
         {
             var newStaff = ToStaffDb(staff);
-            context.Staffs.Add(newStaff);
+            var entity = context.Staffs.Add(newStaff);
             context.SaveChanges();
+            return ToStaff(entity.Entity);
         }
 
         public void Delete(Staff staff)
@@ -34,6 +36,11 @@ namespace Repository.Sqlite
             foreach (var staffDb in staffsDb)
             {
                 var staff = ToStaff(staffDb);
+                GetBaseProperties(staff, staffDb);
+                if (staff is HighLevelStaff highLevelStaff)
+                {
+                    GetStaffSubordinates(highLevelStaff);
+                }
                 staffs.Add(staff);
             }
             return staffs;
@@ -43,47 +50,67 @@ namespace Repository.Sqlite
         {
             var staffDb = context.Staffs.FirstOrDefault(x => x.Id == id);
             var staff = ToStaff(staffDb);
+            GetBaseProperties(staff, staffDb);
+
+            if (staff is HighLevelStaff highLevelStaff)
+            {
+                GetStaffSubordinates(highLevelStaff);
+            }
             return staff;
         }
 
         public void Update(Staff staff)
         {
-            throw new System.NotImplementedException();
+            var staffDb = ToStaffDb(staff);
+            context.Entry(staffDb).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
         private Staff ToStaff(StaffDb staffDb)
         {
-            var staff = new Staff();
-
             switch (staffDb.GroupDb)
             {
                 case GroupDb.Employee:
-                    staff = new Employee();
-                    break;
+                    return new Employee();
 
                 case GroupDb.Salesman:
-                    staff = new Salesman();
-                    break;
+                    return new Salesman();
 
                 case GroupDb.Manager:
-                    staff = new Manager();
-                    break;
+                    return new Manager();
 
                 default:
                     throw new Exception("Wrong Group " + staffDb.GroupDb);
             }
+        }
 
+        private void GetBaseProperties(Staff staff, StaffDb staffDb)
+        {
             staff.Id = staffDb.Id;
             staff.FirstName = staffDb.FirstName;
             staff.MiddleName = staffDb.MiddleName;
             staff.LastName = staffDb.LastName;
             staff.WorkingSince = staffDb.WorkingSince;
             staff.BaseSalary = staffDb.BaseSalary;
-            staff.HasChief = staffDb.HasChief;
             staff.ChiefId = staffDb.ChiefId;
             staff.Group = ToGroup(staffDb.GroupDb);
-                        
-            return staff;
+        }
+
+        private void GetStaffSubordinates(HighLevelStaff highLevelStaff)
+        {
+            var staffsDb = context.Staffs
+                .Where(x => x.ChiefId == highLevelStaff.Id)
+                .ToList();
+
+            if (staffsDb.Count == 0)
+                return;
+
+            foreach (var staffDb in staffsDb)
+            {
+                var subordinate = ToStaff(staffDb);
+                GetBaseProperties(subordinate, staffDb);
+                highLevelStaff.Subordinates.Add(subordinate);
+            }
         }
 
         private StaffDb ToStaffDb(Staff staff)
@@ -95,7 +122,6 @@ namespace Repository.Sqlite
                 LastName = staff.LastName,
                 WorkingSince = staff.WorkingSince,
                 BaseSalary = staff.BaseSalary,
-                HasChief = staff.HasChief,
                 ChiefId = staff.ChiefId,
                 GroupDb = ToGroupDb(staff.Group)
             };

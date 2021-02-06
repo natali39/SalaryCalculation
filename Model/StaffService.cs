@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SalaryCalculation.Model
@@ -18,9 +19,9 @@ namespace SalaryCalculation.Model
             return repository.GetAll();
         }
 
-        public void Add(Staff staff)
+        public Staff Add(Staff staff)
         {
-            repository.Add(staff);
+            return repository.Add(staff);
         }
 
         public Staff Read(int id)

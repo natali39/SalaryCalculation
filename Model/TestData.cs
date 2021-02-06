@@ -12,7 +12,6 @@ namespace SalaryCalculation.Model
 
             var staff1 = new Employee()
             {
-                Id = 1,
                 FirstName = "Ivan",
                 MiddleName = "Ivanovich",
                 LastName = "Ivanov",
@@ -24,7 +23,6 @@ namespace SalaryCalculation.Model
 
             var staff2 = new Employee()
             {
-                Id = 2,
                 FirstName = "Petr",
                 MiddleName = "Petrovich",
                 LastName = "Petrov",
@@ -36,7 +34,6 @@ namespace SalaryCalculation.Model
 
             var staff3 = new Salesman()
             {
-                Id = 3,
                 FirstName = "Egor",
                 MiddleName = "Ivanovich",
                 LastName = "Sedov",
@@ -45,10 +42,6 @@ namespace SalaryCalculation.Model
                 Subordinates = new List<Staff> { staff1, staff2 },
                 Group = Group.Salesman
             };
-
-            staff1.ChiefId = 3;
-            staff2.ChiefId = 3;
-
             staffs.Add(staff3);
 
             var staff4 = new Manager()
@@ -62,9 +55,6 @@ namespace SalaryCalculation.Model
                 Subordinates = new List<Staff> { staff3 },
                 Group = Group.Manager
             };
-
-            staff3.ChiefId = 4;
-
             staffs.Add(staff4);
 
             var staff5 = new Manager()
@@ -78,9 +68,6 @@ namespace SalaryCalculation.Model
                 Subordinates = new List<Staff> { staff4 },
                 Group = Group.Manager
             };
-
-            staff3.ChiefId = 5;
-
             staffs.Add(staff5);
 
             var staff6 = new Salesman()

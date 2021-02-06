@@ -2,7 +2,7 @@
 
 namespace SalaryCalculation.Model
 {
-    public class Staff
+    public abstract class Staff
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -20,11 +20,6 @@ namespace SalaryCalculation.Model
         public decimal BaseSalary { get; set; }
 
         /// <summary>
-        /// Наличие начальника
-        /// </summary>
-        public bool HasChief { get; set; }
-
-        /// <summary>
         /// Id Начальника
         /// </summary>
         public int ChiefId { get; set; }
@@ -38,5 +33,7 @@ namespace SalaryCalculation.Model
         {
             return BaseSalary;
         }
-    }  
+
+        //decimal GetBonus() нуно ли получать отдельно сумму надбавки???
+    }
 }
