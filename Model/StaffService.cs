@@ -38,5 +38,6 @@ namespace SalaryCalculation.Model
         {
             repository.Delete(staff);
         }
+
     }
 }

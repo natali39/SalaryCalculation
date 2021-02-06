@@ -7,12 +7,12 @@ namespace SalaryCalculation.Tests
     public class EmployeeTest
     {
         [Test]
-        public void GetSalary_AnnualRateLessThenMax_RightValue() 
+        public void GetSalary_ShouldReturn_Equals() // < чем maxAnnualRate
         {
 
             var staff = new Employee()
             {
-                WorkingSince = new DateTime(2019, 6, 12), //
+                WorkingSince = new DateTime(2019, 6, 12),
                 BaseSalary = 30000
             }; 
 
