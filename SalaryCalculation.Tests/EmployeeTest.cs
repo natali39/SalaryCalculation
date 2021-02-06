@@ -6,8 +6,10 @@ namespace SalaryCalculation.Tests
 {
     public class EmployeeTest
     {
+        //Проверка расчета зарплаты Employee, если рассчетная суммарная надбавка
+        //за стаж работы меньше максимального процента суммарной надбавки.
         [Test]
-        public void GetSalary_ShouldReturn_Equals() // < чем maxAnnualRate
+        public void GetSalary_ExperienceRatLessThenMax_RightValue()
         {
 
             var staff = new Employee()
@@ -22,8 +24,10 @@ namespace SalaryCalculation.Tests
             Assert.AreEqual(salary, 30900.00);
         }
 
+        //Проверка расчета зарплаты Employee, если рассчетная суммарная надбавка
+        //за стаж работы превышает максимальный процент суммарной надбавки.
         [Test]
-        public void GetSalary_LimitMaxAnnualRate_RightValue()
+        public void GetSalary_LimitMaxExperienceRate_RightValue()
         {
             var staff = new Employee()
             {
