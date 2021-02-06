@@ -46,7 +46,6 @@ namespace SalaryCalculation.Model
 
             var staff4 = new Manager()
             {
-                Id = 4,
                 FirstName = "Vitaly",
                 MiddleName = "Petrovich",
                 LastName = "Krasnov",
@@ -59,7 +58,6 @@ namespace SalaryCalculation.Model
 
             var staff5 = new Manager()
             {
-                Id = 5,
                 FirstName = "Ivan",
                 MiddleName = "Petrovich",
                 LastName = "Belov",
@@ -72,7 +70,6 @@ namespace SalaryCalculation.Model
 
             var staff6 = new Salesman()
             {
-                Id = 6,
                 FirstName = "Denis",
                 MiddleName = "Ivanovich",
                 LastName = "Chernov",

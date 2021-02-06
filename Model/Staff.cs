@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SalaryCalculation.Model
 {
@@ -29,11 +30,14 @@ namespace SalaryCalculation.Model
         /// </summary>
         public Group Group { get; set; }
 
+        //Если у дочерних классов не будет реализован свой метод расчета,
+        //то в качестве заработной платы используется базовая ставка сотрудника.
         public virtual decimal GetSalary(DateTime payDate)
         {
             return BaseSalary;
         }
 
         //decimal GetBonus() нуно ли получать отдельно сумму надбавки???
+
     }
 }

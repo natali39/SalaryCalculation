@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository.Sqlite
 {
+    //Создать отдельный класс для сопоставления сущностей контекста базы данных и сущностей бизнес-логики,
+    //чтобы упростить код StaffRepository
     public class StaffRepository : IStaffRepository
     {
         private readonly SalaryCalculationContext context;
