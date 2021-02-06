@@ -36,11 +36,8 @@ namespace Repository.Sqlite
             foreach (var staffDb in staffsDb)
             {
                 var staff = ToStaff(staffDb);
-                GetBaseProperties(staff, staffDb);
-                if (staff is HighLevelStaff highLevelStaff)
-                {
-                    GetStaffSubordinates(highLevelStaff);
-                }
+                GetProperties(staff, staffDb);
+                
                 staffs.Add(staff);
             }
             return staffs;
@@ -50,12 +47,8 @@ namespace Repository.Sqlite
         {
             var staffDb = context.Staffs.FirstOrDefault(x => x.Id == id);
             var staff = ToStaff(staffDb);
-            GetBaseProperties(staff, staffDb);
+            GetProperties(staff, staffDb);
 
-            if (staff is HighLevelStaff highLevelStaff)
-            {
-                GetStaffSubordinates(highLevelStaff);
-            }
             return staff;
         }
 
@@ -84,7 +77,7 @@ namespace Repository.Sqlite
             }
         }
 
-        private void GetBaseProperties(Staff staff, StaffDb staffDb)
+        private void GetProperties(Staff staff, StaffDb staffDb)
         {
             staff.Id = staffDb.Id;
             staff.FirstName = staffDb.FirstName;
@@ -94,6 +87,10 @@ namespace Repository.Sqlite
             staff.BaseSalary = staffDb.BaseSalary;
             staff.ChiefId = staffDb.ChiefId;
             staff.Group = ToGroup(staffDb.GroupDb);
+            if (staff is HighLevelStaff highLevelStaff)
+            {
+                GetStaffSubordinates(highLevelStaff);
+            }
         }
 
         private void GetStaffSubordinates(HighLevelStaff highLevelStaff)
@@ -108,7 +105,7 @@ namespace Repository.Sqlite
             foreach (var staffDb in staffsDb)
             {
                 var subordinate = ToStaff(staffDb);
-                GetBaseProperties(subordinate, staffDb);
+                GetProperties(subordinate, staffDb);
                 highLevelStaff.Subordinates.Add(subordinate);
             }
         }
