@@ -11,7 +11,6 @@ namespace Repository.Sqlite.Entities
         public string LastName { get; set; }
         public DateTime WorkingSince { get; set; }
         public decimal BaseSalary { get; set; }
-        public bool HasChief { get; set; }
         public int ChiefId { get; set; }
         public GroupDb GroupDb { get; set; }
     }
