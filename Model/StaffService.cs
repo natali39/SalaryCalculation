@@ -24,7 +24,7 @@ namespace SalaryCalculation.Model
             return repository.Add(staff);
         }
 
-        public Staff Read(int id)
+        public Staff Get(int id)
         {
             return repository.Get(id);
         }

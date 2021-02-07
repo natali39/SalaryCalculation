@@ -21,7 +21,8 @@ namespace SalaryCalculationConsole
 
                 if (staffs[i] is HighLevelStaff highLevelStaff)
                 {
-                    Console.WriteLine($"Имееет подчиненных:");
+                    Console.WriteLine($"Список подчиненных:");
+
                     foreach (var sub in highLevelStaff.Subordinates)
                     {
                         Console.WriteLine($"Сотрудник {sub.LastName} ({sub.Id}) относится к группе {sub.Group} и имеет з/п {sub.GetSalary(DateTime.Now)}");
